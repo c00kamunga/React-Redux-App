@@ -8,9 +8,10 @@ export const FETCH_FILMS_FAIL= 'FETCH_FILMS_FAIL';
 export const getFilms = () => dispatch => {
     dispatch({ type: FETCH_FILMS_START});
     axios
-    .get(`https://ghibliapi.herokuapp.com/#tag/Films`)
+    .get('https://ghibliapi.herokuapp.com/films')
     .then(res =>{
-        dispatch({ type: FETCH_FILMS_SUCCESS, payload: res.data.results})
+        console.log(res)
+        dispatch({ type: FETCH_FILMS_SUCCESS, payload: res.data})
     })
     .catch(err => dispatch ({ type: FETCH_FILMS_FAIL, payoad: err}))
 }
